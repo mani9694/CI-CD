@@ -5,11 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'composer install'
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'vendor/bin/phpunit'
             }
         }
         stage('Deploy') {
