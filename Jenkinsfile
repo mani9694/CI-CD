@@ -3,8 +3,17 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'composer:latest'
+                }
+            }
             steps {
-                echo 'Building..'
+                // Download dependencies
+                sh "composer install --ignore-platform-reqs --no-scripts --no-dev --no-interaction --no-progress"
+                
+                // Dump the autoloader (for performance)
+                sh "composer dump-autoload --optimize --no-interaction"
             }
         }
         stage('Test') {
