@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh '${which composer} install'
+                sh 'composer.phar install'
             }
         }
         stage('Test') {
