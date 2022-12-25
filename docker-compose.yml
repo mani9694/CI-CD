@@ -97,7 +97,14 @@ services:
         networks:
             - sail
         ports:
-            - 8001:80                    
+            - 8001:80
+    jenkins:
+        image: jenkins/jenkins:lts
+        privileged: true
+        user: root
+        ports:
+            - 8080:8080
+            - 50000:50000                    
 networks:
     sail:
         driver: bridge
