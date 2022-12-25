@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'composer.phar install'
+                sh 'composer install'
             }
         }
         stage('Test') {
