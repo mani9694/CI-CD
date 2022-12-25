@@ -1,15 +1,17 @@
+
 pipeline {
     agent any
+
+    stages {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh '/usr/local/bin/composer install'
             }
         }
-        stages {
-            stage('Test') {
-                steps {
-                    sh 'node --version'
-                }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
             }
         }
         stage('Deploy') {
