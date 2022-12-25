@@ -1,16 +1,18 @@
 pipeline {
-    agent { dockerfile true }
-
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'composer install'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+        stages {
+            stage('Test') {
+                steps {
+                    sh 'node --version'
+                }
             }
         }
         stage('Deploy') {
