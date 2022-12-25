@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh '/usr/bin/composer install'
+                sh '/usr/local/bin/composer install'
             }
         }
         stage('Test') {
